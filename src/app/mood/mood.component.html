@@ -1,0 +1,38 @@
+<div class="button-container">
+
+    <button (click)="showSubButtons(mood)" class="btn mx-3" [class]="'btn mx-3 btn-' + mood.color"
+        *ngFor="let mood of moodsHeirarchy[moodsHeirarchy.length-1]">{{mood.name}}</button>
+
+    <div class="container mt-3">
+        <span class="mx-3">Selected Mood: {{currentSelected.name}}</span>
+        <button (click)="goBack()" *ngIf="moodsHeirarchy.length > 1" class="btn btn-secondary">Go Back</button>
+    </div>
+
+    <div class="container form-group">
+        <textarea [(ngModel)]="note" class="w-100 form-control" name="notes"
+            placeholder="Tell me about your day"></textarea>
+        <div>
+
+            <div class="container">
+                <button (click)="submit()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        <div *ngIf="img" class="imgContainer">
+            <img src='{{img}}' alt="Mood">
+        </div>
+
+        <div class="journal-container container">
+            <div class="row">
+                <article *ngFor="let journal of getEntries()" class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{journal.mood.name}}</h5>
+                            <hr>
+                            <span class="card-text">{{journal.notes}}</span>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </div>
