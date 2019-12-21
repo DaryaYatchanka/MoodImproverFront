@@ -1,3 +1,5 @@
+You can come to my app and get positive quote. 
+
 https://moodimproverfront.herokuapp.com/
 
 
